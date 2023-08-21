@@ -1,0 +1,40 @@
+pipeline{
+    agent any
+    stages{
+        stage('checkout code'){
+            steps{
+                git 'https://github.com/prajyotrakh/dockerautomationproject.git'
+            }
+        }
+        stage('build image'){
+            steps{
+                sh 'docker build -t $image .'
+            }
+        }
+        stage('docker tag'){
+            steps{
+                sh 'docker tag $image $repo'
+                sh 'docker login -u prajyotrakh -p $password'
+                sh 'docker push $repo'
+            }
+        }
+
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout code') {
+            steps {
+                git 'https://github.com/prajyotrakh/dockerautomationproject.git'
+            }
+        }
+        stage('docker swarm + docker-compose = docker stack'){
+            steps{
+                sh 'docker stack deploy -c docker-compose.yml prajyot'
+            }
+        }
+    }
+}
+
