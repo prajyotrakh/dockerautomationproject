@@ -3,18 +3,18 @@ services:
   train:
     image: prajyotrakh/registertrain:latest
     ports:
-      - "95:80"
+      - "82:80"
     deploy:
       replicas: 2       
   movie:
     image: prajyotrakh/registermovie:latest
     ports:
-      - "96:80"
+      - "82:80"
     deploy:
       replicas: 2      
   shop:
     image: prajyotrakh/registershop:latest 
     ports:
-      - "97:80"
+      - "84:80"
     deploy:
       replicas: 2        
