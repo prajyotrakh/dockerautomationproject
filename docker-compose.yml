@@ -9,7 +9,7 @@ services:
   movie:
     image: prajyotrakh/registermovie:latest
     ports:
-      - "82:80"
+      - "83:80"
     deploy:
       replicas: 2      
   shop:
